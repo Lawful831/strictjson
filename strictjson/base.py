@@ -473,7 +473,7 @@ def strict_json(system_prompt: str, user_prompt: str, output_format: dict, custo
         new_output_format = wrap_with_angle_brackets(output_format, delimiter, 1)
         
         output_format_prompt = f'''\nOutput in the following json string format: {new_output_format}
-Update text enclosed in <>. Be concise. Output only the json string without any explanation.'''
+Update text enclosed in <>. Be concise. Output only the json string without any explanation. Do not modify the key values, keep them the same. Do not add more keys than the one's on the input format.'''
 
         for i in range(num_tries):
             my_system_prompt = str(system_prompt) + output_format_prompt + error_msg
